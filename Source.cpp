@@ -32,13 +32,17 @@ void xuatmang(SV*dssv, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		printf("sinh vien : %s", dssv[i].hoten);
-		printf("MSSV : %s", dssv[i].mssv);
-		printf("diem toan : %f", dssv[i].toan);
-		printf("diem ly : %f", dssv[i].ly);
-		printf("diem hoa : %f", dssv[i].hoa);
-
+		printf("\nsinh vien : %s", dssv[i].hoten);
+		printf("\nMSSV : %s", dssv[i].mssv);
+		printf("\ndiem toan : %.2f", dssv[i].toan);
+		printf("\ndiem ly : %.2f", dssv[i].ly);
+		printf("\ndiem hoa : %.2f", dssv[i].hoa);
+		printf("\n------------------------------------\n");
 	}
+}
+void nhapdulieutuFILE(SV*dssv, int &n)
+{
+	
 }
 
 
@@ -46,9 +50,33 @@ void xuatmang(SV*dssv, int n)
 void main()
 {
 	int n = 0;
+	int chon;
 	SV *dssv = new SV[100];
-	nhapmang(dssv, n);
-	xuatmang(dssv, n);
+	bool exit = false;
+	do
+	{
+		printf("chon chuc nang :");
+		printf("\n1/ nhap thong tin tu ban phim");
+		printf("\n2/ nhap thong tin tu file");
+		printf("\n3/ xem thong tin");
+		printf("\n4/ thoat chuong trinh");
+		scanf("%d", &chon);
+		switch (chon)
+		{
+		case 4 :
+				exit = true;
+				break;
+		case 1:
+			nhapmang(dssv, n);
+			xuatmang(dssv, n);
+			break;
+		case 3:
+			xuatmang(dssv, n);
+			break;
+		case 2:
+		}
+	}
+	while (!exit);
 	
 	_getch();
 }
