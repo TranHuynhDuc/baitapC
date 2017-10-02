@@ -42,10 +42,26 @@ void xuatmang(SV*dssv, int n)
 }
 void nhapdulieutuFILE(SV*dssv, int &n)
 {
-	
+	n = 0;
+	//delete dssv;
+	//dssv = new SV[1000];
+	FILE *fin;
+	fopen_s(&fin, "data.bin", "rb");
+	if (fin != NULL)
+		while (!feof(fin))
+			if (fread(dssv++, sizeof(SV), 1, fin))
+				n++;
+	printf("Loaded");
+	fclose(fin);
 }
 
-
+void luuFile(SV *dssv, int n) {
+	FILE *fout;
+	fopen_s(&fout, "data.bin", "wb");
+	fwrite(dssv, sizeof(SV), n, fout);
+	printf("Saved");
+	fclose(fout);
+}
 
 void main()
 {
@@ -58,22 +74,28 @@ void main()
 		printf("chon chuc nang :");
 		printf("\n1/ nhap thong tin tu ban phim");
 		printf("\n2/ nhap thong tin tu file");
-		printf("\n3/ xem thong tin");
-		printf("\n4/ thoat chuong trinh");
-		scanf("%d", &chon);
+		printf("\n3/ Luu du lieu ra file");
+		printf("\n4/ xem thong tin");
+		printf("\n5/ thoat chuong trinh");
+		scanf_s("%d", &chon);
 		switch (chon)
 		{
-		case 4 :
+		case 5 :
 				exit = true;
 				break;
 		case 1:
 			nhapmang(dssv, n);
 			xuatmang(dssv, n);
 			break;
-		case 3:
+		case 4:
 			xuatmang(dssv, n);
 			break;
 		case 2:
+			nhapdulieutuFILE(dssv, n);
+			break;
+		case 3:
+			luuFile(dssv, n);
+			break;
 		}
 	}
 	while (!exit);
