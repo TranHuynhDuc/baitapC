@@ -13,12 +13,14 @@ void nhapmang(SV *dsSV, int &n)
 	int m = 0;
 	printf("nhap n  ");
 	scanf_s("%d", &m);
-	for (int i = n; i < m+n; i++)
+	int limit = m + n;
+	for (int i = n; i < limit; i++)
 	{
+		fseek(stdin, 0, SEEK_END);
 		printf("nhap ho ten ");
-		scanf_s("%s", &dsSV[i].hoten);
+		gets_s(dsSV[i].hoten);
 		printf("nhap mssv ");
-		scanf_s("%s", &dsSV[i].mssv);
+		gets_s(dsSV[i].mssv);
 		printf("nhap diem Toan "); scanf_s("%f", &dsSV[i].toan);
 		printf("nhap diem Ly "); scanf_s("%f", &dsSV[i].ly);
 		printf("nhap diem Hoa "); scanf_s("%f", &dsSV[i].hoa);
@@ -43,9 +45,8 @@ void xuatmang(SV*dssv, int n)
 
 void main()
 {
-	int n=0;
-	
-	SV *dssv=new SV[100];
+	int n = 0;
+	SV *dssv = new SV[100];
 	nhapmang(dssv, n);
 	xuatmang(dssv, n);
 	
