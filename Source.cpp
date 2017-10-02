@@ -4,5 +4,6 @@
 void main()
 {
 	printf("hi");
+	printf("nhap ten");
 	_getch();
 }
