@@ -4,18 +4,22 @@
 
 struct SV
 {
-	char hoten[];
+	char hoten[50];
 	float toan, ly, hoa;
-	char mssv;
+	char mssv[50];
 };
-void nhapmang()
+void nhapmang(SV *dsSV, int &n)
 {
-	int n;
+	int m = 0;
 	printf("nhap n");
-	for (int i = 0; i < n; i++)
+	scanf_s("%d", &m);
+	for (int i = n; i < m+n; i++)
 	{
 		printf("nhap ho ten");
-		scanf("%")
+		scanf_s("%s", &dsSV[i].hoten);
+
+
+		n++;
 	}
 
 }
